@@ -29863,21 +29863,40 @@ function Question() {
       isCorrect: false
     }]
   }];
-  console.log(questions);
   const [currentText, setCurrentText] = (0, _react.useState)(0);
+  const [showScore, setShowScore] = (0, _react.useState)(false);
+  const [score, setScore] = (0, _react.useState)(0);
+  const [tryAgain, setTryAgain] = (0, _react.useState)(0);
+
+  const trueAswers = isCorrect => {
+    if (isCorrect === true) {
+      setScore(score + 1);
+    } else {
+      setShowScore(true);
+    }
+  };
 
   const handleClick = () => {
     const nextText = currentText + 1;
-    setCurrentText(nextText);
+
+    if (nextText < questions.length) {
+      setCurrentText(nextText);
+    } else {
+      console.log('wrong');
+    }
   };
 
-  return /*#__PURE__*/_react.default.createElement("div", null, false ? /*#__PURE__*/_react.default.createElement("div", null, questions[0]) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, questions[currentText].question)), /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", null, showScore ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "your score is ", score, " out of 5 "), /*#__PURE__*/_react.default.createElement("button", null, "Try again")) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "quiz"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, questions[currentText].question)), /*#__PURE__*/_react.default.createElement("div", {
     className: "answers"
   }, questions[currentText].answers.map(answer => {
-    return /*#__PURE__*/_react.default.createElement("button", null, answer.answerText);
+    return /*#__PURE__*/_react.default.createElement("button", {
+      onClick: () => trueAswers(answer.isCorrect)
+    }, answer.answerText);
   })), /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClick
-  }, "text")));
+  }, "text"))));
 }
 
 var _default = Question;

@@ -1,9 +1,27 @@
 .answers {
-  margin-left: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+ 
   display: flex;
   flex-direction: column;
 }
+.answers button {
+  margin-bottom: 1rem;
+}
 #root {
-  display:flex;
-  flex-direction: column;
+  /* display:flex; */
+  text-align: center;
+  /* display: grid;
+  grid-template-columns: repeat( 3 , 1fr); */
+}
+body {
+  background: rgba(96, 102, 208, 0.7);
+}
+
+.quiz{
+ width: 400px;
+ max-width: 100%;
+ grid-column: 2;
+ background-color: white;
+ border-radius: 10px;
 }

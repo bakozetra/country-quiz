@@ -47,29 +47,51 @@ function Question() {
       ]
     }
   ]
-  console.log(questions);
- const [currentText , setCurrentText] = useState(0);
- const handleClick = () => {
-   const nextText = currentText + 1;
-   setCurrentText(nextText);
- }
 
+  const [currentText, setCurrentText] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [score, setScore] = useState(0);
+  const [tryAgain , setTryAgain] = useState(0);
+  
+  const trueAswers = (isCorrect) => {
+    if (isCorrect === true) {
+      setScore(score + 1);
+    }
+    else {
+      setShowScore(true);
+    }
+  }
+  const handleClick = () => {
+    const nextText = currentText + 1;
+    if (nextText < questions.length) {
+      setCurrentText(nextText);
+    } else {
+      console.log('wrong')
+    }
+  }
   return (
     <div>
-      {false ? <div>{questions[0]}</div> :
+      {showScore ?
+        <div>
+          <p>your score is {score} out of 5 </p>
+          <button>Try again</button>
+        </div> :
         <>
-          <div>
-            <p>{questions[currentText].question}</p>
+          <div className="quiz">
+            <div>
+              <p>{questions[currentText].question}</p>
+            </div>
+            <div className="answers">
+              {questions[currentText].answers.map(answer => {
+                return <button onClick={() => trueAswers(answer.isCorrect)}>{answer.answerText}</button>
+              })}
+            </div>
+            <button onClick={handleClick}>text</button>
           </div>
-          <div className="answers">
-            {questions[currentText].answers.map(answer => {
-              return <button>{answer.answerText}</button>
-            })}
-           
-          </div>
-          <button onClick = {handleClick}>text</button>
-        </>} 
+        </>
+        }
     </div>
+
   )
 }
 export default Question
