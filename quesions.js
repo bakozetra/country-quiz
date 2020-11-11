@@ -1,73 +1,75 @@
 import React, { useEffect, useState } from 'react'
 function Question() {
-
-  var allQuestion = [
+  const questions = [
     {
       question: "Kabul is capital of ",
-      answers: ["Åland Islands", "Afghanistan", " Albania", "Austria"],
-      correct: "Afghanistan",
-      questionId: "099099"
+      answers: [
+        { answerText: "Åland Islands", isCorrect: false },
+        { answerText: "Afghanistan", isCorrect: true },
+        { answerText: " Albania", isCorrect: false },
+        { answerText: "Austria", isCorrect: false },
+      ],
     },
-
     {
       question: "Mariehamn is capital of  ",
-      answers: ["Åland Islands ", "Andorra", "Angola", "Anguilla"],
-      correct: "Åland Islands",
-      answered: false,
-      questionId: Date.now,
+      answers: [
+        { answerText: "Åland Islands ", isCorrect: true },
+        { answerText: "Andorra", isCorrect: false },
+        { answerText: "Angola", isCorrect: false },
+        { answerText: "Anguilla", isCorrect: false },
+      ]
     },
     {
       question: "Andorra la Vella is capital of ",
-      answers: [" Andorra", "Anguilla ", "Argentina", "Armenia "],
-      correct: "Andorra",
-      answered: false,
-      questionId: Date.now,
+      answers: [
+        { answerText: " Andorra", isCorrect: true },
+        { answerText: "Anguilla ", isCorrect: false },
+        { answerText: "Argentina", isCorrect: false },
+        { answerText: "Armenia ", isCorrect: false },
+      ]
     },
     {
       question: "Vienna is capital of ",
-      answers: ["Austria ", "Azerbaijan", "Bahamas", "Bahamas "],
-      correct: "Austria",
-      answered: false,
-      questionId: Date.now,
+      answers: [
+        { answerText: "Austria ", isCorrect: true },
+        { answerText: "Azerbaijan", isCorrect: false },
+        { answerText: "Bahamas", isCorrect: false },
+        { answerText: "Bahamas ", isCorrect: false },
+      ]
     },
     {
       question: " Manama is capital of ",
-      answers: [" Bahrain", " Bangladesh", " American Samoa", "Argentina"],
-      correct: "Bahrain",
-      answered: false,
-      questionId: Date.now,
-    },
+      answers: [
+        { answerText: " Bahrain", isCorrect: true },
+        { answerText: " Bangladesh", isCorrect: false },
+        { answerText: " American Samoa", isCorrect: false },
+        { answerText: "Argentina", isCorrect: false },
+      ]
+    }
   ]
+  console.log(questions);
+ const [currentText , setCurrentText] = useState(0);
+ const handleClick = () => {
+   const nextText = currentText + 1;
+   setCurrentText(nextText);
+ }
 
-  let [Quiz, setQuiz] = useState([]);
-
-  function handleClick(index) {
-    const generateRandom = Math.floor(Math.random() * allQuestion.length)
-    console.log(generateRandom);
-    var allQuestionGenerate = allQuestion[generateRandom];
-    console.log(allQuestionGenerate)
-    return setQuiz({...allQuestionGenerate });
-  }
-  // function addPlayer(index) {
-  //   setQuiz(prevTeams => {
-  //     return [ ...prevTeams.slice(0, index), {...prevTeams[index], answers: [...prevTeams[index].answers, "c"] }, ...prevTeams.slice(index+1)];
-  //   });
-  // }
-  useEffect(()=> {
-    handleClick()
-  } , [])
-  console.log(Quiz)
   return (
     <div>
-      <p>{Quiz.question}</p>
-      <button>{Quiz.answers}</button>
-      {allQuestion.map(p => {
-        {p.answers.map(p => {
-        <button>{p}</button>
-        })}
-      })}
-      <button onClick = {handleClick}>text</button>
-    </div >
-)
+      {false ? <div>{questions[0]}</div> :
+        <>
+          <div>
+            <p>{questions[currentText].question}</p>
+          </div>
+          <div className="answers">
+            {questions[currentText].answers.map(answer => {
+              return <button>{answer.answerText}</button>
+            })}
+           
+          </div>
+          <button onClick = {handleClick}>text</button>
+        </>} 
+    </div>
+  )
 }
 export default Question

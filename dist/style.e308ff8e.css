@@ -1,0 +1,11 @@
+.answers {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+#root {
+  display:flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

@@ -29787,66 +29787,97 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Question() {
-  var allQuestion = [{
+  const questions = [{
     question: "Kabul is capital of ",
-    answers: ["Åland Islands", "Afghanistan", " Albania", "Austria"],
-    correct: "Afghanistan",
-    questionId: "099099"
+    answers: [{
+      answerText: "Åland Islands",
+      isCorrect: false
+    }, {
+      answerText: "Afghanistan",
+      isCorrect: true
+    }, {
+      answerText: " Albania",
+      isCorrect: false
+    }, {
+      answerText: "Austria",
+      isCorrect: false
+    }]
   }, {
     question: "Mariehamn is capital of  ",
-    answers: ["Åland Islands ", "Andorra", "Angola", "Anguilla"],
-    correct: "Åland Islands",
-    answered: false,
-    questionId: Date.now
+    answers: [{
+      answerText: "Åland Islands ",
+      isCorrect: true
+    }, {
+      answerText: "Andorra",
+      isCorrect: false
+    }, {
+      answerText: "Angola",
+      isCorrect: false
+    }, {
+      answerText: "Anguilla",
+      isCorrect: false
+    }]
   }, {
     question: "Andorra la Vella is capital of ",
-    answers: [" Andorra", "Anguilla ", "Argentina", "Armenia "],
-    correct: "Andorra",
-    answered: false,
-    questionId: Date.now
+    answers: [{
+      answerText: " Andorra",
+      isCorrect: true
+    }, {
+      answerText: "Anguilla ",
+      isCorrect: false
+    }, {
+      answerText: "Argentina",
+      isCorrect: false
+    }, {
+      answerText: "Armenia ",
+      isCorrect: false
+    }]
   }, {
     question: "Vienna is capital of ",
-    answers: ["Austria ", "Azerbaijan", "Bahamas", "Bahamas "],
-    correct: "Austria",
-    answered: false,
-    questionId: Date.now
+    answers: [{
+      answerText: "Austria ",
+      isCorrect: true
+    }, {
+      answerText: "Azerbaijan",
+      isCorrect: false
+    }, {
+      answerText: "Bahamas",
+      isCorrect: false
+    }, {
+      answerText: "Bahamas ",
+      isCorrect: false
+    }]
   }, {
     question: " Manama is capital of ",
-    answers: [" Bahrain", " Bangladesh", " American Samoa", "Argentina"],
-    correct: "Bahrain",
-    answered: false,
-    questionId: Date.now
+    answers: [{
+      answerText: " Bahrain",
+      isCorrect: true
+    }, {
+      answerText: " Bangladesh",
+      isCorrect: false
+    }, {
+      answerText: " American Samoa",
+      isCorrect: false
+    }, {
+      answerText: "Argentina",
+      isCorrect: false
+    }]
   }];
-  let [Quiz, setQuiz] = (0, _react.useState)([]);
+  console.log(questions);
+  const [currentText, setCurrentText] = (0, _react.useState)(0);
 
-  function handleClick(index) {
-    const generateRandom = Math.floor(Math.random() * allQuestion.length);
-    console.log(generateRandom);
-    var allQuestionGenerate = allQuestion[generateRandom];
-    console.log(allQuestionGenerate);
-    return setQuiz({ ...allQuestionGenerate
-    });
-  } // function addPlayer(index) {
-  //   setQuiz(prevTeams => {
-  //     return [ ...prevTeams.slice(0, index), {...prevTeams[index], answers: [...prevTeams[index].answers, "c"] }, ...prevTeams.slice(index+1)];
-  //   });
-  // }
+  const handleClick = () => {
+    const nextText = currentText + 1;
+    setCurrentText(nextText);
+  };
 
-
-  (0, _react.useEffect)(() => {
-    handleClick();
-  }, []);
-  console.log(Quiz);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, Quiz.question), /*#__PURE__*/_react.default.createElement("button", null, Quiz.answers), allQuestion.map(p => {
-    {
-      p.answers.map(p => {
-        /*#__PURE__*/
-        _react.default.createElement("button", null, p);
-      });
-    }
-  }), /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", null, false ? /*#__PURE__*/_react.default.createElement("div", null, questions[0]) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, questions[currentText].question)), /*#__PURE__*/_react.default.createElement("div", {
+    className: "answers"
+  }, questions[currentText].answers.map(answer => {
+    return /*#__PURE__*/_react.default.createElement("button", null, answer.answerText);
+  })), /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClick
-  }, "text"));
+  }, "text")));
 }
 
 var _default = Question;
@@ -29911,7 +29942,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49487" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61158" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
