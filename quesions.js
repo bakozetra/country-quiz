@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
+import {Link} from 'react-router-dom';
+
 function Question() {
   const questions = [
     {
@@ -52,7 +54,7 @@ function Question() {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [tryAgain , setTryAgain] = useState(0);
-  
+
   const trueAswers = (isCorrect) => {
     if (isCorrect === true) {
       setScore(score + 1);
