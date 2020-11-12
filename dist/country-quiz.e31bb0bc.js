@@ -33853,7 +33853,9 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"quesions.js":[function(require,module,exports) {
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
+module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
+},{}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33863,138 +33865,7 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function Question() {
-  const questions = [{
-    question: "Kabul is capital of ",
-    answers: [{
-      answerText: "Åland Islands",
-      isCorrect: false
-    }, {
-      answerText: "Afghanistan",
-      isCorrect: true
-    }, {
-      answerText: " Albania",
-      isCorrect: false
-    }, {
-      answerText: "Austria",
-      isCorrect: false
-    }]
-  }, {
-    question: "Mariehamn is capital of  ",
-    answers: [{
-      answerText: "Åland Islands ",
-      isCorrect: true
-    }, {
-      answerText: "Andorra",
-      isCorrect: false
-    }, {
-      answerText: "Angola",
-      isCorrect: false
-    }, {
-      answerText: "Anguilla",
-      isCorrect: false
-    }]
-  }, {
-    question: "Andorra la Vella is capital of ",
-    answers: [{
-      answerText: " Andorra",
-      isCorrect: true
-    }, {
-      answerText: "Anguilla ",
-      isCorrect: false
-    }, {
-      answerText: "Argentina",
-      isCorrect: false
-    }, {
-      answerText: "Armenia ",
-      isCorrect: false
-    }]
-  }, {
-    question: "Vienna is capital of ",
-    answers: [{
-      answerText: "Austria ",
-      isCorrect: true
-    }, {
-      answerText: "Azerbaijan",
-      isCorrect: false
-    }, {
-      answerText: "Bahamas",
-      isCorrect: false
-    }, {
-      answerText: "Bahamas ",
-      isCorrect: false
-    }]
-  }, {
-    question: " Manama is capital of ",
-    answers: [{
-      answerText: " Bahrain",
-      isCorrect: true
-    }, {
-      answerText: " Bangladesh",
-      isCorrect: false
-    }, {
-      answerText: " American Samoa",
-      isCorrect: false
-    }, {
-      answerText: "Argentina",
-      isCorrect: false
-    }]
-  }];
-  const [currentText, setCurrentText] = (0, _react.useState)(0);
-  const [showScore, setShowScore] = (0, _react.useState)(false);
-  const [score, setScore] = (0, _react.useState)(0);
-  const [tryAgain, setTryAgain] = (0, _react.useState)(0);
-
-  const trueAswers = isCorrect => {
-    if (isCorrect === true) {
-      setScore(score + 1);
-    } else {
-      setShowScore(true);
-    }
-  };
-
-  const handleClick = () => {
-    const nextText = currentText + 1;
-
-    if (nextText < questions.length) {
-      setCurrentText(nextText);
-    } else {
-      console.log('wrong');
-    }
-  };
-
-  return /*#__PURE__*/_react.default.createElement("div", null, showScore ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "your score is ", score, " out of 5 "), /*#__PURE__*/_react.default.createElement("button", null, "Try again")) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
-    className: "quiz"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, questions[currentText].question)), /*#__PURE__*/_react.default.createElement("div", {
-    className: "answers"
-  }, questions[currentText].answers.map(answer => {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      onClick: () => trueAswers(answer.isCorrect)
-    }, answer.answerText);
-  })), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: handleClick
-  }, "text"))));
-}
-
-var _default = Question;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"App.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _quesions = _interopRequireDefault(require("./quesions"));
+var _undraw_adventure_4hum = _interopRequireDefault(require("./undraw_adventure_4hum.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34008,8 +33879,10 @@ function App() {
   const [countries, setCountry] = (0, _react.useState)([]);
   const [randomCountry, setrandomCountry] = (0, _react.useState)({});
   const [randomOptions, setrandomOptions] = (0, _react.useState)([]);
-  const [capitals, setCapitals] = (0, _react.useState)(" ");
-  const [isCapital, setIsCapial] = (0, _react.useState)(false);
+  const [capitalName, setCapitalName] = (0, _react.useState)('');
+  const [isCapital, setIsCapial] = (0, _react.useState)(true);
+  const [score, setscore] = (0, _react.useState)(0);
+  const [callingCodes, setcallingCodes] = (0, _react.useState)([]);
 
   async function fetchURL() {
     const res = await fetch(URL);
@@ -34018,61 +33891,76 @@ function App() {
     setCountry(data);
   }
 
-  console.log(countries.capital);
+  console.log(callingCodes);
 
-  const getRandom = () => {
+  const getRandomAll = e => {
     const random = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt3 = countries[Math.floor(Math.random() * countries.length)];
-    const randomOptions = [random.name, randomOpt1.name, randomOpt2.name, randomOpt3.name];
-    const randomCapital = [random.capital];
-    setCapitals(randomCapital);
+    let randomOptions = [random.name, randomOpt1.name, randomOpt2.name, randomOpt3.name];
+    randomOptions.sort(() => {
+      return 0.5 - Math.random();
+    });
+    let randomCapital = [random.capital];
+    const code = [random.callingCodes];
+    console.log(code);
+    setcallingCodes(code);
+    setCapitalName(randomCapital);
     console.log(randomCapital);
     console.log(randomOptions);
     setrandomOptions(randomOptions);
   };
 
-  function me() {
-    const countryName = countries.name;
-    const targets = e.target.value;
-    console.log(targets);
+  console.log(countries);
 
-    if (countryName === targets) {
-      console.log('hiiii');
+  function handleClick(e) {
+    const countryCapital = !setIsCapial(capitalName);
+    console.log(countryCapital);
+    const trueCapital = e.target.value;
+    console.log(trueCapital);
+
+    if (countryCapital == trueCapital) {
+      console.log('true');
     } else {
-      console.log('me');
+      console.log('wrong');
     }
   }
 
-  console.log(randomOptions);
   (0, _react.useEffect)(() => {
     fetchURL();
   }, []);
   (0, _react.useEffect)(() => {
     if (countries.length) {
-      getRandom();
+      getRandomAll();
     }
   }, [countries]);
   return /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "CapitalText"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "capitalName"
-  }, capitals, " is capital of : "), /*#__PURE__*/_react.default.createElement("div", {
+  }, " ", capitalName, " is capital of : "), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: _undraw_adventure_4hum.default
+  }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "options"
   }, randomOptions.map(options => {
     return /*#__PURE__*/_react.default.createElement("button", {
-      onClick: e => me(e),
-      value: capitals
+      className: "countryOptions",
+      value: isCapital,
+      onClick: e => handleClick(e)
     }, options);
   })), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: getRandom
-  }, "text"));
+    onClick: getRandomAll
+  }, "text")));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./quesions":"quesions.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34114,7 +34002,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56275" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52280" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

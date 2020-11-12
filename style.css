@@ -1,7 +1,11 @@
+body {
+  background-image: url(./background.png);
+  background-repeat: no-repeat;
+}
 .answers {
   margin-left: 2rem;
   margin-right: 2rem;
- 
+
   display: flex;
   flex-direction: column;
 }
@@ -11,22 +15,56 @@
 .options {
   display: flex;
   flex-direction: column;
+  padding-top: 2rem;
 }
 
 #root {
-  /* display:flex; */
-  text-align: center;
-  /* display: grid;
-  grid-template-columns: repeat( 3 , 1fr); */
-}
-body {
-  background: rgba(96, 102, 208, 0.7);
+  text-align: center;  
+ 
 }
 
-.quiz{
- width: 400px;
- max-width: 100%;
- grid-column: 2;
- background-color: white;
- border-radius: 10px;
+h1 {
+  color: white;
+
+}
+header {
+  display: flex;
+}
+
+.countryOptions {
+  border-color: whitesmoke;
+  max-width: 100%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+  height: 40px;
+  right: 1rem;
+}
+.quiz {
+  width: 400px;
+  max-width: 100%;
+  grid-column: 2;
+  background-color: white;
+  border-radius: 10px;
+ position: relative;
+}
+.capitalName {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+header p {
+  position: absolute;
+  right: 1rem;
+}
+
+.CapitalText {
+  display: flex;
+}
+
+.CapitalText p img {
+  position: absolute;
+    top: -2rem;
+    right: 1rem;
 }
