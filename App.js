@@ -10,7 +10,8 @@ function App() {
   const [capitalName, setCapitalName] = useState('');
   const [isCapital, setIsCapial] = useState(false);
   const [score, setscore] = useState(0);
-  const [isShown , setIsShown] = useState(false);
+  const [isShown, setIsShown] = useState(false);
+  const [randomQuestion, setRandomQuestion] = useState([]);
 
   async function fetchURL() {
     const res = await fetch(URL);
@@ -21,6 +22,7 @@ function App() {
 
   const getRandomAll = () => {
     const random = countries[Math.floor(Math.random() * countries.length)];
+    console.log(random.flag);
     const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt3 = countries[Math.floor(Math.random() * countries.length)];
@@ -28,10 +30,15 @@ function App() {
     randomOptions.sort(() => { return 0.5 - Math.random() });
     let randomCapital = [random.capital];
     const randomCountrys = [random.name];
+    const randomFlagAndCapital = [random.flag, random.capital];
+    const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)]
     setrandomCountry(randomCountrys);
     setCapitalName(randomCapital)
     setrandomOptions(randomOptions);
+    setRandomQuestion(randoms);
   }
+
+
 
   function handleClick(e) {
     e.preventDefault()
@@ -44,15 +51,19 @@ function App() {
       setIsCapial(true);
     }
   }
-  function bacToQuiz () {
-    if(isCapital == true) {
+
+  function bacToQuiz() {
+    if (isCapital == true) {
       setIsCapial(false);
     }
     else {
       setIsCapial(true);
     }
-
   }
+  // function Qustions () {
+  //   if()
+  // }
+
   useEffect(() => {
     fetchURL();
   }, []);
@@ -68,13 +79,18 @@ function App() {
       {isCapital ? <div className="Score">
         <p><img src={ScoreImage}></img></p>
         <h2>Results</h2>
-      <p>You got {score} correct answers</p>
-      <button onClick={bacToQuiz}>Try again</button>
+        <p>You got {score} correct answers</p>
+        <button onClick={bacToQuiz}>Try again</button>
       </div> :
         <div className="quiz">
           <div className="CapitalText">
-            <p className="capitalName"> {capitalName} is capital of : </p>
-            <p><img src={Image}></img></p>
+            {randomQuestion == capitalName ? 
+            <p className="capitalName"> {randomQuestion} is capital of </p> : 
+            <div>
+              <p><img src={randomQuestion} className="flag"></img></p>
+              <p className= "flag-Question">Which country does it flag belonges to</p>
+            </div>}
+            <p className="decription-trip"><img src={Image}></img></p>
           </div>
           <div className="options">
             <form onClick={(e) => handleClick(e)}>

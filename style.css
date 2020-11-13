@@ -1,6 +1,11 @@
 body {
   background-image: url(./background.png);
   background-repeat: no-repeat;
+  flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat( 3 , 1fr);
+    grid-column: 2;
+    width: 100%;
 }
 
 
@@ -24,6 +29,7 @@ form button {
 
 #root {
   text-align: center;
+  grid-column: 2;
 }
 
 h1 {
@@ -32,6 +38,7 @@ h1 {
 }
 header {
   display: flex;
+  grid-column: 2;
 }
 
 .countryOptions {
@@ -57,9 +64,10 @@ header p {
 
 .CapitalText {
   display: flex;
+  padding-bottom: 1rem;
 }
 
-.CapitalText p img {
+.decription-trip img {
   position: absolute;
     top: -2rem;
     right: 1rem;
@@ -68,4 +76,15 @@ header p {
   background-color: white;
   width: 400px;
   border-radius: 10px;
+}
+.flag {
+  width: 20%;
+  position: absolute;
+  left: 1rem;
+  top: 1rem
+}
+
+.flag-Question {
+  padding-top: 5rem;
+  padding-left: 2rem;
 }

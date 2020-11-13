@@ -33887,6 +33887,7 @@ function App() {
   const [isCapital, setIsCapial] = (0, _react.useState)(false);
   const [score, setscore] = (0, _react.useState)(0);
   const [isShown, setIsShown] = (0, _react.useState)(false);
+  const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
 
   async function fetchURL() {
     const res = await fetch(URL);
@@ -33897,6 +33898,7 @@ function App() {
 
   const getRandomAll = () => {
     const random = countries[Math.floor(Math.random() * countries.length)];
+    console.log(random.flag);
     const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt3 = countries[Math.floor(Math.random() * countries.length)];
@@ -33906,9 +33908,12 @@ function App() {
     });
     let randomCapital = [random.capital];
     const randomCountrys = [random.name];
+    const randomFlagAndCapital = [random.flag, random.capital];
+    const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)];
     setrandomCountry(randomCountrys);
     setCapitalName(randomCapital);
     setrandomOptions(randomOptions);
+    setRandomQuestion(randoms);
   };
 
   function handleClick(e) {
@@ -33930,7 +33935,10 @@ function App() {
     } else {
       setIsCapial(true);
     }
-  }
+  } // function Qustions () {
+  //   if()
+  // }
+
 
   (0, _react.useEffect)(() => {
     fetchURL();
@@ -33953,9 +33961,16 @@ function App() {
     className: "quiz"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "CapitalText"
-  }, /*#__PURE__*/_react.default.createElement("p", {
+  }, randomQuestion == capitalName ? /*#__PURE__*/_react.default.createElement("p", {
     className: "capitalName"
-  }, " ", capitalName, " is capital of : "), /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, " ", randomQuestion, " is capital of ") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: randomQuestion,
+    className: "flag"
+  })), /*#__PURE__*/_react.default.createElement("p", {
+    className: "flag-Question"
+  }, "Which country does it flag belonges to")), /*#__PURE__*/_react.default.createElement("p", {
+    className: "decription-trip"
+  }, /*#__PURE__*/_react.default.createElement("img", {
     src: _undraw_adventure_4hum.default
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "options"
