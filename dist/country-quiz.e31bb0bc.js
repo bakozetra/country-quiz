@@ -33886,15 +33886,17 @@ function App() {
   const [capitalName, setCapitalName] = (0, _react.useState)('');
   const [isCapital, setIsCapial] = (0, _react.useState)(false);
   const [score, setscore] = (0, _react.useState)(0);
-  const [isShown, setIsShown] = (0, _react.useState)(false);
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
+  const [toggle, setToggle] = (0, _react.useState)(false);
+  const useref = (0, _react.useRef)(null); // Fetcch the data
 
   async function fetchURL() {
     const res = await fetch(URL);
     const data = await res.json();
     console.log(data);
     setCountry(data);
-  }
+  } // Get the countries randomly
+
 
   const getRandomAll = () => {
     const random = countries[Math.floor(Math.random() * countries.length)];
@@ -33923,7 +33925,8 @@ function App() {
 
     if (randomCountry == trueCapital) {
       setscore(score + 1);
-      getRandomAll;
+      useref.current.backgroundColor = "red";
+      setToggle(!toggle);
     } else {
       setIsCapial(true);
     }
@@ -33932,13 +33935,11 @@ function App() {
   function bacToQuiz() {
     if (isCapital == true) {
       setIsCapial(false);
+      getRandomAll();
     } else {
       setIsCapial(true);
     }
-  } // function Qustions () {
-  //   if()
-  // }
-
+  }
 
   (0, _react.useEffect)(() => {
     fetchURL();
@@ -33977,16 +33978,20 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("form", {
     onClick: e => handleClick(e)
   }, /*#__PURE__*/_react.default.createElement("button", {
-    value: randomOptions[0]
+    value: randomOptions[0],
+    ref: useref
   }, randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
-    value: randomOptions[1]
+    value: randomOptions[1],
+    ref: useref
   }, randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
-    value: randomOptions[2]
+    value: randomOptions[2],
+    ref: useref
   }, randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
-    value: randomOptions[3]
-  }, randomOptions[3]))), /*#__PURE__*/_react.default.createElement("button", {
+    value: randomOptions[3],
+    ref: useref
+  }, randomOptions[3]))), toggle ? /*#__PURE__*/_react.default.createElement("button", {
     onClick: getRandomAll
-  }, "text")));
+  }, "text") : " "));
 }
 
 var _default = App;
@@ -34033,7 +34038,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58606" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53465" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

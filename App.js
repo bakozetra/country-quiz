@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ScoreImage from './undraw_winners.svg'
 import Image from './undraw_adventure_4hum.svg'
 
@@ -10,9 +10,11 @@ function App() {
   const [capitalName, setCapitalName] = useState('');
   const [isCapital, setIsCapial] = useState(false);
   const [score, setscore] = useState(0);
-  const [isShown, setIsShown] = useState(false);
   const [randomQuestion, setRandomQuestion] = useState([]);
+  const [toggle, setToggle] = useState(false);
+  const useref = useRef(null);
 
+  // Fetcch the data
   async function fetchURL() {
     const res = await fetch(URL);
     const data = await res.json();
@@ -20,6 +22,7 @@ function App() {
     setCountry(data);
   }
 
+  // Get the countries randomly
   const getRandomAll = () => {
     const random = countries[Math.floor(Math.random() * countries.length)];
     console.log(random.flag);
@@ -38,31 +41,28 @@ function App() {
     setRandomQuestion(randoms);
   }
 
-
-
+  
   function handleClick(e) {
     e.preventDefault()
     const trueCapital = e.target.value;
     console.log(trueCapital);
     if (randomCountry == trueCapital) {
       setscore(score + 1);
-      getRandomAll
+      useref.current.backgroundColor = "red";
+      setToggle(!toggle)
     } else {
       setIsCapial(true);
     }
   }
-
   function bacToQuiz() {
     if (isCapital == true) {
       setIsCapial(false);
+      getRandomAll()
     }
     else {
       setIsCapial(true);
     }
   }
-  // function Qustions () {
-  //   if()
-  // }
 
   useEffect(() => {
     fetchURL();
@@ -84,23 +84,23 @@ function App() {
       </div> :
         <div className="quiz">
           <div className="CapitalText">
-            {randomQuestion == capitalName ? 
-            <p className="capitalName"> {randomQuestion} is capital of </p> : 
-            <div>
-              <p><img src={randomQuestion} className="flag"></img></p>
-              <p className= "flag-Question">Which country does it flag belonges to</p>
-            </div>}
+            {randomQuestion == capitalName ?
+              <p className="capitalName"> {randomQuestion} is capital of </p> :
+              <div>
+                <p><img src={randomQuestion} className="flag"></img></p>
+                <p className="flag-Question">Which country does it flag belonges to</p>
+              </div>}
             <p className="decription-trip"><img src={Image}></img></p>
           </div>
           <div className="options">
-            <form onClick={(e) => handleClick(e)}>
-              <button value={randomOptions[0]}>{randomOptions[0]}</button>
-              <button value={randomOptions[1]}>{randomOptions[1]}</button>
-              <button value={randomOptions[2]}>{randomOptions[2]}</button>
-              <button value={randomOptions[3]}>{randomOptions[3]}</button>
+            <form onClick ={(e) => handleClick(e)}>
+              <button value={randomOptions[0]}  ref={useref}>{randomOptions[0]}</button>
+              <button value={randomOptions[1]} ref={useref}>{randomOptions[1]}</button>
+              <button value={randomOptions[2]} ref={useref}>{randomOptions[2]}</button>
+              <button value={randomOptions[3]} ref={useref}>{randomOptions[3]}</button>
             </form>
           </div>
-          <button onClick={getRandomAll}>text</button>
+          {toggle ? <button onClick={getRandomAll}>text</button> : " "}
         </div>
       }
     </div>
