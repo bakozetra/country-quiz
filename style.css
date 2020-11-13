@@ -2,12 +2,20 @@ body {
   background-image: url(./background.png);
   background-repeat: no-repeat;
   flex-direction: column;
-    display: grid;
-    grid-template-columns: repeat( 3 , 1fr);
-    grid-column: 2;
-    width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column: 2;
+  width: 100%;
+  margin: 0;
+}
+header {
+  display: flex;
+  grid-column: 2;
 }
 
+h1 {
+  color: white;
+}
 
 form {
   display: flex;
@@ -23,35 +31,31 @@ form button {
   margin-left: 10%;
   margin-right: 10%;
   border-radius: 10px;
-  height: 40px;
+  height: 50px;
   right: 1rem;
+  outline: none;
+  border: green 2px solid;
+  background-color: white;
+  position: relative;
 }
-
+b {
+  position: absolute;
+  left: 1rem;
+}
 #root {
   text-align: center;
   grid-column: 2;
 }
 
-h1 {
-  color: white;
-
-}
-header {
-  display: flex;
-  grid-column: 2;
-}
-
-.countryOptions {
- 
-}
 .quiz {
   width: 400px;
   max-width: 100%;
   grid-column: 2;
   background-color: white;
   border-radius: 10px;
- position: relative;
+  position: relative;
 }
+
 .capitalName {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -66,11 +70,15 @@ header p {
   display: flex;
   padding-bottom: 1rem;
 }
+.capital-question {
+  padding-left: 1rem;
+  width: 50%;
+}
 
 .decription-trip img {
   position: absolute;
-    top: -2rem;
-    right: 1rem;
+  top: -2rem;
+  right: 1rem;
 }
 .Score {
   background-color: white;
@@ -81,10 +89,52 @@ header p {
   width: 20%;
   position: absolute;
   left: 1rem;
-  top: 1rem
+  top: 1rem;
 }
 
 .flag-Question {
   padding-top: 5rem;
   padding-left: 2rem;
+}
+.capital-question,
+.flag-Question {
+  font-size: 25px;
+}
+.flag-Question {
+  padding-right: 1rem;
+}
+.TryAgain {
+  height: 50px;
+  width: 170px;
+  margin-bottom: 2rem;
+  border-radius: 15px;
+  outline: none;
+}
+
+.next-country {
+  width: 75px;
+  height: 45px;
+  margin-bottom: 1rem;
+  margin-left: 10rem;
+  border-radius: 15px;
+  outline: none;
+  background-color: orange;
+  border: none;
+}
+
+@media (max-width: 375px) {
+  .quiz,
+  .Score {
+    width: 300px;
+  }
+  .capital-question,
+  .flag-Question {
+    font-size: 20px;
+  }
+  .decription-trip img {
+    position: absolute;
+    top: -2rem;
+    right: 0.5rem;
+    width: 40%;
+  }
 }

@@ -33888,7 +33888,8 @@ function App() {
   const [score, setscore] = (0, _react.useState)(0);
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [toggle, setToggle] = (0, _react.useState)(false);
-  const useref = (0, _react.useRef)(null); // Fetcch the data
+  let useref = (0, _react.useRef)(null);
+  console.log(useref); // Fetcch the data
 
   async function fetchURL() {
     const res = await fetch(URL);
@@ -33908,7 +33909,7 @@ function App() {
     randomOptions.sort(() => {
       return 0.5 - Math.random();
     });
-    let randomCapital = [random.capital];
+    const randomCapital = [random.capital];
     const randomCountrys = [random.name];
     const randomFlagAndCapital = [random.flag, random.capital];
     const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)];
@@ -33916,7 +33917,8 @@ function App() {
     setCapitalName(randomCapital);
     setrandomOptions(randomOptions);
     setRandomQuestion(randoms);
-  };
+  }; // To handle the Click button on form 
+
 
   function handleClick(e) {
     e.preventDefault();
@@ -33924,13 +33926,17 @@ function App() {
     console.log(trueCapital);
 
     if (randomCountry == trueCapital) {
+      //Adding Score 
       setscore(score + 1);
-      useref.current.backgroundColor = "red";
+      useref.current.backgroundColor = "green";
+      console.log(useref);
       setToggle(!toggle);
     } else {
       setIsCapial(true);
+      useref.backgroundColor = 'red';
     }
-  }
+  } //function to back to the country quiz
+
 
   function bacToQuiz() {
     if (isCapital == true) {
@@ -33957,13 +33963,14 @@ function App() {
   }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
     src: _undraw_winners.default
   })), /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", score, " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
-    onClick: bacToQuiz
+    onClick: bacToQuiz,
+    className: "TryAgain"
   }, "Try again")) : /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "CapitalText"
   }, randomQuestion == capitalName ? /*#__PURE__*/_react.default.createElement("p", {
-    className: "capitalName"
+    className: "capital-question"
   }, " ", randomQuestion, " is capital of ") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
     src: randomQuestion,
     className: "flag"
@@ -33975,22 +33982,25 @@ function App() {
     src: _undraw_adventure_4hum.default
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "options"
-  }, /*#__PURE__*/_react.default.createElement("form", {
-    onClick: e => handleClick(e)
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[0],
-    ref: useref
-  }, randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
+    ref: useref,
+    onClick: e => handleClick(e)
+  }, " ", /*#__PURE__*/_react.default.createElement("b", null, "A"), " ", randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[1],
-    ref: useref
-  }, randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+    ref: useref,
+    onClick: e => handleClick(e)
+  }, " ", /*#__PURE__*/_react.default.createElement("b", null, "B"), " ", randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[2],
-    ref: useref
-  }, randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+    ref: useref,
+    onClick: e => handleClick(e)
+  }, " ", /*#__PURE__*/_react.default.createElement("b", null, "C"), " ", randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[3],
-    ref: useref
-  }, randomOptions[3]))), toggle ? /*#__PURE__*/_react.default.createElement("button", {
-    onClick: getRandomAll
+    ref: useref,
+    onClick: e => handleClick(e)
+  }, " ", /*#__PURE__*/_react.default.createElement("b", null, "D"), " ", randomOptions[3]))), toggle ? /*#__PURE__*/_react.default.createElement("button", {
+    onClick: getRandomAll,
+    className: "next-country"
   }, "text") : " "));
 }
 
