@@ -55,7 +55,7 @@ function App() {
       setToggle(!toggle)
     } else {
       setIsCapial(true);
-      useref.backgroundColor = 'red';
+      useref.current.backgroundColor = 'red';
     }
   }
 
@@ -79,7 +79,8 @@ function App() {
       getRandomAll()
     }
   }, [countries])
-  console.log(randomCountry);
+
+
   return (
     <div className="container">
       {isCapital ? <div className="Score">

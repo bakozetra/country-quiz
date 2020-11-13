@@ -33933,7 +33933,7 @@ function App() {
       setToggle(!toggle);
     } else {
       setIsCapial(true);
-      useref.backgroundColor = 'red';
+      useref.current.backgroundColor = 'red';
     }
   } //function to back to the country quiz
 
@@ -33955,7 +33955,6 @@ function App() {
       getRandomAll();
     }
   }, [countries]);
-  console.log(randomCountry);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, isCapital ? /*#__PURE__*/_react.default.createElement("div", {
@@ -34048,7 +34047,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53465" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60473" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
