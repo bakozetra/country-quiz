@@ -2,25 +2,28 @@ body {
   background-image: url(/background.e3ad310f.png);
   background-repeat: no-repeat;
 }
-.answers {
-  margin-left: 2rem;
-  margin-right: 2rem;
 
-  display: flex;
-  flex-direction: column;
-}
-.options button {
-  margin-bottom: 1rem;
-}
-.options {
+
+form {
   display: flex;
   flex-direction: column;
   padding-top: 2rem;
 }
 
+form button {
+  margin-bottom: 1rem;
+  border-color: whitesmoke;
+  max-width: 100%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+  height: 40px;
+  right: 1rem;
+}
+
 #root {
-  text-align: center;  
- 
+  text-align: center;
 }
 
 h1 {
@@ -32,14 +35,7 @@ header {
 }
 
 .countryOptions {
-  border-color: whitesmoke;
-  max-width: 100%;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  border-radius: 10px;
-  height: 40px;
-  right: 1rem;
+ 
 }
 .quiz {
   width: 400px;
@@ -67,6 +63,11 @@ header p {
   position: absolute;
     top: -2rem;
     right: 1rem;
+}
+.Score {
+  background-color: white;
+  width: 400px;
+  border-radius: 10px;
 }
 
 

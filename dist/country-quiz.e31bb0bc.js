@@ -33853,7 +33853,9 @@ if ("development" !== "production") {
     style: _propTypes.default.object
   });
 }
-},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
+},{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"undraw_winners.svg":[function(require,module,exports) {
+module.exports = "/undraw_winners.e19bd0fa.svg";
+},{}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
 },{}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -33864,6 +33866,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _undraw_winners = _interopRequireDefault(require("./undraw_winners.svg"));
 
 var _undraw_adventure_4hum = _interopRequireDefault(require("./undraw_adventure_4hum.svg"));
 
@@ -33877,12 +33881,12 @@ const URL = 'https://restcountries.eu/rest/v2/all';
 
 function App() {
   const [countries, setCountry] = (0, _react.useState)([]);
-  const [randomCountry, setrandomCountry] = (0, _react.useState)({});
+  const [randomCountry, setrandomCountry] = (0, _react.useState)('');
   const [randomOptions, setrandomOptions] = (0, _react.useState)([]);
   const [capitalName, setCapitalName] = (0, _react.useState)('');
-  const [isCapital, setIsCapial] = (0, _react.useState)(true);
+  const [isCapital, setIsCapial] = (0, _react.useState)(false);
   const [score, setscore] = (0, _react.useState)(0);
-  const [callingCodes, setcallingCodes] = (0, _react.useState)([]);
+  const [isShown, setIsShown] = (0, _react.useState)(false);
 
   async function fetchURL() {
     const res = await fetch(URL);
@@ -33891,9 +33895,7 @@ function App() {
     setCountry(data);
   }
 
-  console.log(callingCodes);
-
-  const getRandomAll = e => {
+  const getRandomAll = () => {
     const random = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt1 = countries[Math.floor(Math.random() * countries.length)];
     const randomOpt2 = countries[Math.floor(Math.random() * countries.length)];
@@ -33903,27 +33905,30 @@ function App() {
       return 0.5 - Math.random();
     });
     let randomCapital = [random.capital];
-    const code = [random.callingCodes];
-    console.log(code);
-    setcallingCodes(code);
+    const randomCountrys = [random.name];
+    setrandomCountry(randomCountrys);
     setCapitalName(randomCapital);
-    console.log(randomCapital);
-    console.log(randomOptions);
     setrandomOptions(randomOptions);
   };
 
-  console.log(countries);
-
   function handleClick(e) {
-    const countryCapital = !setIsCapial(capitalName);
-    console.log(countryCapital);
+    e.preventDefault();
     const trueCapital = e.target.value;
     console.log(trueCapital);
 
-    if (countryCapital == trueCapital) {
-      console.log('true');
+    if (randomCountry == trueCapital) {
+      setscore(score + 1);
+      getRandomAll;
     } else {
-      console.log('wrong');
+      setIsCapial(true);
+    }
+  }
+
+  function bacToQuiz() {
+    if (isCapital == true) {
+      setIsCapial(false);
+    } else {
+      setIsCapial(true);
     }
   }
 
@@ -33935,9 +33940,16 @@ function App() {
       getRandomAll();
     }
   }, [countries]);
+  console.log(randomCountry);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, isCapital ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "Score"
+  }, /*#__PURE__*/_react.default.createElement("p", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: _undraw_winners.default
+  })), /*#__PURE__*/_react.default.createElement("h2", null, "Results"), /*#__PURE__*/_react.default.createElement("p", null, "You got ", score, " correct answers"), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: bacToQuiz
+  }, "Try again")) : /*#__PURE__*/_react.default.createElement("div", {
     className: "quiz"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "CapitalText"
@@ -33947,20 +33959,24 @@ function App() {
     src: _undraw_adventure_4hum.default
   }))), /*#__PURE__*/_react.default.createElement("div", {
     className: "options"
-  }, randomOptions.map(options => {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      className: "countryOptions",
-      value: isCapital,
-      onClick: e => handleClick(e)
-    }, options);
-  })), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onClick: e => handleClick(e)
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    value: randomOptions[0]
+  }, randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
+    value: randomOptions[1]
+  }, randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
+    value: randomOptions[2]
+  }, randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
+    value: randomOptions[3]
+  }, randomOptions[3]))), /*#__PURE__*/_react.default.createElement("button", {
     onClick: getRandomAll
   }, "text")));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./undraw_winners.svg":"undraw_winners.svg","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34002,7 +34018,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52280" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58606" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
