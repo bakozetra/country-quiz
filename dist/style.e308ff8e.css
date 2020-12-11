@@ -121,6 +121,9 @@ header p {
   background-color: orange;
   border: none;
 }
+form button:hover {
+  background-color: orange;
+}
 
 @media (max-width: 375px) {
   .quiz,

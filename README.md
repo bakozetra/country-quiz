@@ -39,7 +39,7 @@ Template for your readme :
 
 <div align="center">
   <h3>
-    <a href="https://distracted-lichterman-5242de.netlify.app/">
+    <a href="https://distracted-lichterman-5242de.netlify.app">
       Demo
     </a>
     <span> | </span>
@@ -54,7 +54,7 @@ Template for your readme :
 ## Table of Contents
 
 -   [Overview](#overview)
-    -[Built With](#built-with)
+    [Built With](#built-with)
 -   [Features](#features)
 -   [How to use](#how-to-use)
 -   [Contact](#contact)
@@ -75,7 +75,7 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
      
 -   What was your experience?
     I have experiencent how to manage you time and how to arrange my work.
-    
+
 -   What have you learned/improved?
     There are many things which I have learned with this exercise including how to set the logic which you are going to use. When should I fetch once and twice because in these exercises I have to fetch twice.  I think that is good to know. Not only that ,I have new lessons  like when I should pass value and use functions in React hooks.
 -   Your wisdom? :)

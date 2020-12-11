@@ -12,8 +12,7 @@ function App() {
   const [score, setscore] = useState(0);
   const [randomQuestion, setRandomQuestion] = useState([]);
   const [toggle, setToggle] = useState(false);
-  let useref = useRef(null);
-  console.log(useref);
+  let useref = useRef(null); 
 
   // Fetcch the data
   async function fetchURL() {
@@ -33,9 +32,10 @@ function App() {
     let randomOptions = [random.name, randomOpt1.name, randomOpt2.name, randomOpt3.name];
     randomOptions.sort(() => { return 0.5 - Math.random() });
     const randomCapital = [random.capital];
-    const randomCountrys = [random.name];
+    const randomCountrys = random.name;
     const randomFlagAndCapital = [random.flag, random.capital];
     const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)]
+    setToggle(false);
     setrandomCountry(randomCountrys);
     setCapitalName(randomCapital)
     setrandomOptions(randomOptions);
@@ -47,18 +47,32 @@ function App() {
     e.preventDefault()
     const trueCapital = e.target.value;
     console.log(trueCapital);
+    setToggle(!toggle);
+     
+    console.log(useref.current.value)
     if (randomCountry == trueCapital) {
       //Adding Score 
       setscore(score + 1);
-      useref.current.backgroundColor = "green";
-      console.log(useref);
-      setToggle(!toggle)
+      e.target.style.backgroundColor = "green"
+      
+      
+      // e.target.stylebackgroundImage = `<p>🎂🎂</p>`;
+      
     } else {
-      setIsCapial(true);
-      useref.current.backgroundColor = 'red';
+      e.target.style.backgroundColor = "red"
+      useref.current.style.backgroundColor = "green"
+      setTimeout(() => {
+        setIsCapial(true);
+       }, 1000);
     }
+    
   }
+   function handleClickNext () {
+     getRandomAll();
+     useref.current.style.backgroundColor = 'transparent';
+   }
 
+  console.log(toggle);
   //function to back to the country quiz
   function bacToQuiz() {
     if (isCapital == true) {
@@ -69,6 +83,7 @@ function App() {
       setIsCapial(true);
     }
   }
+  console.log(randomCountry);
 
   useEffect(() => {
     fetchURL();
@@ -79,7 +94,6 @@ function App() {
       getRandomAll()
     }
   }, [countries])
-
 
   return (
     <div className="container">
@@ -102,13 +116,25 @@ function App() {
           </div>
           <div className="options">
             <form>
-              <button value={randomOptions[0]} ref={useref} onClick={(e) => handleClick(e)}> <b>A</b> {randomOptions[0]}</button>
-              <button value={randomOptions[1]} ref={useref} onClick={(e) => handleClick(e)}> <b>B</b> {randomOptions[1]}</button>
-              <button value={randomOptions[2]} ref={useref} onClick={(e) => handleClick(e)}> <b>C</b> {randomOptions[2]}</button>
-              <button value={randomOptions[3]} ref={useref} onClick={(e) => handleClick(e)}> <b>D</b> {randomOptions[3]}</button>
+              <button 
+              value={randomOptions[0]} 
+              ref={randomCountry === randomOptions[0] ? useref : null} 
+              onClick={(e) => handleClick(e)}> <b>A</b> {randomOptions[0]}</button>
+              <button value={randomOptions[1]} 
+               ref={randomCountry === randomOptions[1] ? useref : null}
+               onClick={(e) => handleClick(e)}> <b>B</b> {randomOptions[1]}</button>
+              <button 
+              value={randomOptions[2]} 
+              ref={randomCountry === randomOptions[2] ? useref : null}
+              onClick={(e) => handleClick(e)}> <b>C</b> {randomOptions[2]}</button>
+
+              <button 
+              value={randomOptions[3]} 
+              ref={randomCountry === randomOptions[3] ? useref : null}
+              onClick={(e) => handleClick(e)}> <b>D</b> {randomOptions[3]}</button>
             </form>
           </div>
-          {toggle ? <button onClick={getRandomAll} className="next-country">text</button> : " "}
+          {toggle ? <button onClick={handleClickNext} className="next-country">text</button> : " "}
         </div>
       }
     </div>

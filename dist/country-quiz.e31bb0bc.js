@@ -33888,8 +33888,7 @@ function App() {
   const [score, setscore] = (0, _react.useState)(0);
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [toggle, setToggle] = (0, _react.useState)(false);
-  let useref = (0, _react.useRef)(null);
-  console.log(useref); // Fetcch the data
+  let useref = (0, _react.useRef)(null); // Fetcch the data
 
   async function fetchURL() {
     const res = await fetch(URL);
@@ -33910,9 +33909,10 @@ function App() {
       return 0.5 - Math.random();
     });
     const randomCapital = [random.capital];
-    const randomCountrys = [random.name];
+    const randomCountrys = random.name;
     const randomFlagAndCapital = [random.flag, random.capital];
     const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)];
+    setToggle(false);
     setrandomCountry(randomCountrys);
     setCapitalName(randomCapital);
     setrandomOptions(randomOptions);
@@ -33924,19 +33924,28 @@ function App() {
     e.preventDefault();
     const trueCapital = e.target.value;
     console.log(trueCapital);
+    setToggle(!toggle);
+    console.log(useref.current.value);
 
     if (randomCountry == trueCapital) {
       //Adding Score 
       setscore(score + 1);
-      useref.current.backgroundColor = "green";
-      console.log(useref);
-      setToggle(!toggle);
+      e.target.style.backgroundColor = "green"; // e.target.stylebackgroundImage = `<p>🎂🎂</p>`;
     } else {
-      setIsCapial(true);
-      useref.current.backgroundColor = 'red';
+      e.target.style.backgroundColor = "red";
+      useref.current.style.backgroundColor = "green";
+      setTimeout(() => {
+        setIsCapial(true);
+      }, 1000);
     }
-  } //function to back to the country quiz
+  }
 
+  function handleClickNext() {
+    getRandomAll();
+    useref.current.style.backgroundColor = 'transparent';
+  }
+
+  console.log(toggle); //function to back to the country quiz
 
   function bacToQuiz() {
     if (isCapital == true) {
@@ -33947,6 +33956,7 @@ function App() {
     }
   }
 
+  console.log(randomCountry);
   (0, _react.useEffect)(() => {
     fetchURL();
   }, []);
@@ -33983,22 +33993,22 @@ function App() {
     className: "options"
   }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[0],
-    ref: useref,
+    ref: randomCountry === randomOptions[0] ? useref : null,
     onClick: e => handleClick(e)
   }, " ", /*#__PURE__*/_react.default.createElement("b", null, "A"), " ", randomOptions[0]), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[1],
-    ref: useref,
+    ref: randomCountry === randomOptions[1] ? useref : null,
     onClick: e => handleClick(e)
   }, " ", /*#__PURE__*/_react.default.createElement("b", null, "B"), " ", randomOptions[1]), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[2],
-    ref: useref,
+    ref: randomCountry === randomOptions[2] ? useref : null,
     onClick: e => handleClick(e)
   }, " ", /*#__PURE__*/_react.default.createElement("b", null, "C"), " ", randomOptions[2]), /*#__PURE__*/_react.default.createElement("button", {
     value: randomOptions[3],
-    ref: useref,
+    ref: randomCountry === randomOptions[3] ? useref : null,
     onClick: e => handleClick(e)
   }, " ", /*#__PURE__*/_react.default.createElement("b", null, "D"), " ", randomOptions[3]))), toggle ? /*#__PURE__*/_react.default.createElement("button", {
-    onClick: getRandomAll,
+    onClick: handleClickNext,
     className: "next-country"
   }, "text") : " "));
 }
@@ -34047,7 +34057,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60473" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50742" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
