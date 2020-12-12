@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ScoreImage from './undraw_winners.svg'
 import Image from './undraw_adventure_4hum.svg'
+import Check from './check.svg'
+import Cross from './crossCircula.svg'
 
 const URL = 'https://restcountries.eu/rest/v2/all';
 function App() {
@@ -12,6 +14,7 @@ function App() {
   const [score, setscore] = useState(0);
   const [randomQuestion, setRandomQuestion] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [wrongToggle , setWrongToggle] = useState(false);
   let useref = useRef(null); 
 
   // Fetcch the data
@@ -36,6 +39,7 @@ function App() {
     const randomFlagAndCapital = [random.flag, random.capital];
     const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)]
     setToggle(false);
+    setWrongToggle(false);
     setrandomCountry(randomCountrys);
     setCapitalName(randomCapital)
     setrandomOptions(randomOptions);
@@ -47,29 +51,38 @@ function App() {
     e.preventDefault()
     const trueCapital = e.target.value;
     console.log(trueCapital);
-    setToggle(!toggle);
-     
+   
     console.log(useref.current.value)
     if (randomCountry == trueCapital) {
       //Adding Score 
       setscore(score + 1);
-      e.target.style.backgroundColor = "green"
-      
-      
-      // e.target.stylebackgroundImage = `<p>🎂🎂</p>`;
-      
+      setToggle(!toggle);   
+      e.target.style.backgroundColor = "rgba(96, 191, 136, 1)"
+      e.target.style.backgroundImage = `url(${Check})`
+      e.target.style.backgroundRepeat = `no-repeat`; 
+      e.target.style.backgroundPosition = `260px 0.25rem`;
     } else {
-      e.target.style.backgroundColor = "red"
-      useref.current.style.backgroundColor = "green"
-      setTimeout(() => {
-        setIsCapial(true);
-       }, 1000);
+      e.target.style.backgroundColor = "rgba(234, 130, 130, 1)"
+      e.target.style.backgroundImage = `url(${Cross})`
+      e.target.style.backgroundRepeat = `no-repeat`;
+      e.target.style.backgroundPosition = `260px 0.25rem`; 
+      useref.current.style.backgroundColor = "rgba(96, 191, 136, 1)"
+      useref.current.style.backgroundImage =`url(${Check})`
+      useref.current.style.backgroundRepeat = 'no-repeat'
+      useref.current.style.backgroundPosition = `260px 0.25rem`;
+      setWrongToggle(!toggle);
     }
     
   }
    function handleClickNext () {
-     getRandomAll();
-     useref.current.style.backgroundColor = 'transparent';
+      getRandomAll();
+      useref.current.style.backgroundColor = 'transparent';
+      useref.current.style.backgroundImage = "none"
+   }
+
+   function handleClickNextScore() {
+      setWrongToggle(!wrongToggle);
+      setIsCapial(true);
    }
 
   console.log(toggle);
@@ -127,14 +140,14 @@ function App() {
               value={randomOptions[2]} 
               ref={randomCountry === randomOptions[2] ? useref : null}
               onClick={(e) => handleClick(e)}> <b>C</b> {randomOptions[2]}</button>
-
               <button 
               value={randomOptions[3]} 
               ref={randomCountry === randomOptions[3] ? useref : null}
               onClick={(e) => handleClick(e)}> <b>D</b> {randomOptions[3]}</button>
             </form>
           </div>
-          {toggle ? <button onClick={handleClickNext} className="next-country">text</button> : " "}
+          {toggle ? <button onClick={handleClickNext} className="next-country">Next</button> : ""}
+          {wrongToggle ? <button onClick={handleClickNextScore} className="next-country">Next</button> : ""}
         </div>
       }
     </div>

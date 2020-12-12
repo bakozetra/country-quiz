@@ -33857,6 +33857,10 @@ if ("development" !== "production") {
 module.exports = "/undraw_winners.e19bd0fa.svg";
 },{}],"undraw_adventure_4hum.svg":[function(require,module,exports) {
 module.exports = "/undraw_adventure_4hum.134ba6b2.svg";
+},{}],"check.svg":[function(require,module,exports) {
+module.exports = "/check.f9449c1c.svg";
+},{}],"crossCircula.svg":[function(require,module,exports) {
+module.exports = "/crossCircula.e48d1119.svg";
 },{}],"App.js":[function(require,module,exports) {
 "use strict";
 
@@ -33870,6 +33874,10 @@ var _react = _interopRequireWildcard(require("react"));
 var _undraw_winners = _interopRequireDefault(require("./undraw_winners.svg"));
 
 var _undraw_adventure_4hum = _interopRequireDefault(require("./undraw_adventure_4hum.svg"));
+
+var _check = _interopRequireDefault(require("./check.svg"));
+
+var _crossCircula = _interopRequireDefault(require("./crossCircula.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33888,6 +33896,7 @@ function App() {
   const [score, setscore] = (0, _react.useState)(0);
   const [randomQuestion, setRandomQuestion] = (0, _react.useState)([]);
   const [toggle, setToggle] = (0, _react.useState)(false);
+  const [wrongToggle, setWrongToggle] = (0, _react.useState)(false);
   let useref = (0, _react.useRef)(null); // Fetcch the data
 
   async function fetchURL() {
@@ -33913,6 +33922,7 @@ function App() {
     const randomFlagAndCapital = [random.flag, random.capital];
     const randoms = randomFlagAndCapital[Math.floor(Math.random() * randomFlagAndCapital.length)];
     setToggle(false);
+    setWrongToggle(false);
     setrandomCountry(randomCountrys);
     setCapitalName(randomCapital);
     setrandomOptions(randomOptions);
@@ -33924,25 +33934,38 @@ function App() {
     e.preventDefault();
     const trueCapital = e.target.value;
     console.log(trueCapital);
-    setToggle(!toggle);
     console.log(useref.current.value);
 
     if (randomCountry == trueCapital) {
       //Adding Score 
       setscore(score + 1);
-      e.target.style.backgroundColor = "green"; // e.target.stylebackgroundImage = `<p>🎂🎂</p>`;
+      setToggle(!toggle);
+      e.target.style.backgroundColor = "rgba(96, 191, 136, 1)";
+      e.target.style.backgroundImage = `url(${_check.default})`;
+      e.target.style.backgroundRepeat = `no-repeat`;
+      e.target.style.backgroundPosition = `260px 0.25rem`;
     } else {
-      e.target.style.backgroundColor = "red";
-      useref.current.style.backgroundColor = "green";
-      setTimeout(() => {
-        setIsCapial(true);
-      }, 1000);
+      e.target.style.backgroundColor = "rgba(234, 130, 130, 1)";
+      e.target.style.backgroundImage = `url(${_crossCircula.default})`;
+      e.target.style.backgroundRepeat = `no-repeat`;
+      e.target.style.backgroundPosition = `260px 0.25rem`;
+      useref.current.style.backgroundColor = "rgba(96, 191, 136, 1)";
+      useref.current.style.backgroundImage = `url(${_check.default})`;
+      useref.current.style.backgroundRepeat = 'no-repeat';
+      useref.current.style.backgroundPosition = `260px 0.25rem`;
+      setWrongToggle(!toggle);
     }
   }
 
   function handleClickNext() {
     getRandomAll();
     useref.current.style.backgroundColor = 'transparent';
+    useref.current.style.backgroundImage = "none";
+  }
+
+  function handleClickNextScore() {
+    setWrongToggle(!wrongToggle);
+    setIsCapial(true);
   }
 
   console.log(toggle); //function to back to the country quiz
@@ -34010,12 +34033,15 @@ function App() {
   }, " ", /*#__PURE__*/_react.default.createElement("b", null, "D"), " ", randomOptions[3]))), toggle ? /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClickNext,
     className: "next-country"
-  }, "text") : " "));
+  }, "Next") : "", wrongToggle ? /*#__PURE__*/_react.default.createElement("button", {
+    onClick: handleClickNextScore,
+    className: "next-country"
+  }, "Next") : ""));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./undraw_winners.svg":"undraw_winners.svg","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./undraw_winners.svg":"undraw_winners.svg","./undraw_adventure_4hum.svg":"undraw_adventure_4hum.svg","./check.svg":"check.svg","./crossCircula.svg":"crossCircula.svg"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34057,7 +34083,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50742" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49956" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

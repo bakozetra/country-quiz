@@ -37,11 +37,22 @@ form button {
   border: green 2px solid;
   background-color: white;
   position: relative;
+  color:rgba(96,102,208,.8);
+  font-size: 18px;
+  font-family: "Arial";
+  font-weight: 700;
+  
+
 }
+
 b {
   position: absolute;
   left: 1rem;
 }
+form button:hover {
+  color: white;
+}
+
 #root {
   text-align: center;
   grid-column: 2;
@@ -95,10 +106,14 @@ header p {
 .flag-Question {
   padding-top: 5rem;
   padding-left: 2rem;
+ 
 }
 .capital-question,
 .flag-Question {
+  color: #2f527b;
   font-size: 25px;
+  font-family: "Roboto";
+  font-weight: 700;
 }
 .flag-Question {
   padding-right: 1rem;
