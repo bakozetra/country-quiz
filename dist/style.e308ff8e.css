@@ -1,6 +1,7 @@
 body {
   background-image: url(/background.e3ad310f.png);
   background-repeat: no-repeat;
+  background-size: 100% 100%;
   flex-direction: column;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -28,21 +29,19 @@ form button {
   border-color: whitesmoke;
   max-width: 100%;
   width: 80%;
-  margin-left: 10%;
+  margin-left: 14%;
   margin-right: 10%;
   border-radius: 10px;
-  height: 50px;
   right: 1rem;
   outline: none;
-  border: green 2px solid;
+  border: 2px solid rgba(96, 102, 208, 0.7);
   background-color: white;
   position: relative;
   color:rgba(96,102,208,.8);
   font-size: 18px;
   font-family: "Arial";
   font-weight: 700;
-  
-
+  height: 56px;
 }
 
 b {
@@ -59,7 +58,7 @@ form button:hover {
 }
 
 .quiz {
-  width: 400px;
+  width: 445px;
   max-width: 100%;
   grid-column: 2;
   background-color: white;
@@ -70,6 +69,13 @@ form button:hover {
 .capitalName {
   padding-top: 1rem;
   padding-bottom: 2rem;
+}
+.about {
+  margin: 0;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  padding-top: 2rem;
 }
 
 header p {
@@ -114,6 +120,11 @@ header p {
   font-size: 25px;
   font-family: "Roboto";
   font-weight: 700;
+  margin: 0;
+}
+.capital-question {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 .flag-Question {
   padding-right: 1rem;
@@ -130,7 +141,7 @@ header p {
   width: 75px;
   height: 45px;
   margin-bottom: 1rem;
-  margin-left: 10rem;
+  margin-left: 18rem;
   border-radius: 15px;
   outline: none;
   background-color: orange;
@@ -141,10 +152,15 @@ form button:hover {
 }
 
 @media (max-width: 375px) {
+
   .quiz,
   .Score {
     width: 300px;
   }
+  .next-country {
+    margin-left: 10rem
+  }
+
   .capital-question,
   .flag-Question {
     font-size: 20px;

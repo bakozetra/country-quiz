@@ -33943,16 +33943,16 @@ function App() {
       e.target.style.backgroundColor = "rgba(96, 191, 136, 1)";
       e.target.style.backgroundImage = `url(${_check.default})`;
       e.target.style.backgroundRepeat = `no-repeat`;
-      e.target.style.backgroundPosition = `260px 0.25rem`;
+      e.target.style.backgroundPosition = `96% 0.5rem`;
     } else {
       e.target.style.backgroundColor = "rgba(234, 130, 130, 1)";
       e.target.style.backgroundImage = `url(${_crossCircula.default})`;
       e.target.style.backgroundRepeat = `no-repeat`;
-      e.target.style.backgroundPosition = `260px 0.25rem`;
+      e.target.style.backgroundPosition = `96% 0.5rem`;
       useref.current.style.backgroundColor = "rgba(96, 191, 136, 1)";
       useref.current.style.backgroundImage = `url(${_check.default})`;
       useref.current.style.backgroundRepeat = 'no-repeat';
-      useref.current.style.backgroundPosition = `260px 0.25rem`;
+      useref.current.style.backgroundPosition = `96% 0.5rem`;
       setWrongToggle(!toggle);
     }
   }
@@ -34036,7 +34036,9 @@ function App() {
   }, "Next") : "", wrongToggle ? /*#__PURE__*/_react.default.createElement("button", {
     onClick: handleClickNextScore,
     className: "next-country"
-  }, "Next") : ""));
+  }, "Next") : ""), /*#__PURE__*/_react.default.createElement("p", {
+    className: "about"
+  }, "HANITRINIAINA Nomenjanahary Synthia @ DevChallenges.io"));
 }
 
 var _default = App;
@@ -34083,7 +34085,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49956" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49503" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

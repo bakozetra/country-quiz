@@ -60,16 +60,16 @@ function App() {
       e.target.style.backgroundColor = "rgba(96, 191, 136, 1)"
       e.target.style.backgroundImage = `url(${Check})`
       e.target.style.backgroundRepeat = `no-repeat`; 
-      e.target.style.backgroundPosition = `260px 0.25rem`;
+      e.target.style.backgroundPosition = `96% 0.5rem`;
     } else {
       e.target.style.backgroundColor = "rgba(234, 130, 130, 1)"
       e.target.style.backgroundImage = `url(${Cross})`
       e.target.style.backgroundRepeat = `no-repeat`;
-      e.target.style.backgroundPosition = `260px 0.25rem`; 
+      e.target.style.backgroundPosition = `96% 0.5rem`; 
       useref.current.style.backgroundColor = "rgba(96, 191, 136, 1)"
       useref.current.style.backgroundImage =`url(${Check})`
       useref.current.style.backgroundRepeat = 'no-repeat'
-      useref.current.style.backgroundPosition = `260px 0.25rem`;
+      useref.current.style.backgroundPosition = `96% 0.5rem`;
       setWrongToggle(!toggle);
     }
     
@@ -145,11 +145,14 @@ function App() {
               ref={randomCountry === randomOptions[3] ? useref : null}
               onClick={(e) => handleClick(e)}> <b>D</b> {randomOptions[3]}</button>
             </form>
+           
           </div>
+         
           {toggle ? <button onClick={handleClickNext} className="next-country">Next</button> : ""}
           {wrongToggle ? <button onClick={handleClickNextScore} className="next-country">Next</button> : ""}
         </div>
       }
+       <p className="about">HANITRINIAINA Nomenjanahary Synthia @ DevChallenges.io</p>
     </div>
   )
 }
