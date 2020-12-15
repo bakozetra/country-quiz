@@ -14,8 +14,11 @@ function App() {
   const [score, setscore] = useState(0);
   const [randomQuestion, setRandomQuestion] = useState([]);
   const [toggle, setToggle] = useState(false);
-  const [wrongToggle , setWrongToggle] = useState(false);
-  let useref = useRef(null); 
+  const [disablebutton, setDisbleButton] = useState(false);
+  console.log(disablebutton);
+  const [wrongToggle, setWrongToggle] = useState(false);
+  let useref = useRef(null);
+
 
   // Fetcch the data
   async function fetchURL() {
@@ -44,6 +47,7 @@ function App() {
     setCapitalName(randomCapital)
     setrandomOptions(randomOptions);
     setRandomQuestion(randoms);
+    setDisbleButton(false)
   }
 
   // To handle the Click button on form 
@@ -51,39 +55,42 @@ function App() {
     e.preventDefault()
     const trueCapital = e.target.value;
     console.log(trueCapital);
-   
+
     console.log(useref.current.value)
     if (randomCountry == trueCapital) {
       //Adding Score 
       setscore(score + 1);
-      setToggle(!toggle);   
+      setToggle(!toggle);
       e.target.style.backgroundColor = "rgba(96, 191, 136, 1)"
       e.target.style.backgroundImage = `url(${Check})`
-      e.target.style.backgroundRepeat = `no-repeat`; 
+      e.target.style.backgroundRepeat = `no-repeat`;
       e.target.style.backgroundPosition = `96% 0.5rem`;
+      setDisbleButton(true);
     } else {
       e.target.style.backgroundColor = "rgba(234, 130, 130, 1)"
       e.target.style.backgroundImage = `url(${Cross})`
       e.target.style.backgroundRepeat = `no-repeat`;
-      e.target.style.backgroundPosition = `96% 0.5rem`; 
+      e.target.style.backgroundPosition = `96% 0.5rem`;
       useref.current.style.backgroundColor = "rgba(96, 191, 136, 1)"
-      useref.current.style.backgroundImage =`url(${Check})`
+      useref.current.style.backgroundImage = `url(${Check})`
       useref.current.style.backgroundRepeat = 'no-repeat'
       useref.current.style.backgroundPosition = `96% 0.5rem`;
       setWrongToggle(!toggle);
+      setDisbleButton(true);
     }
-    
-  }
-   function handleClickNext () {
-      getRandomAll();
-      useref.current.style.backgroundColor = 'transparent';
-      useref.current.style.backgroundImage = "none"
-   }
 
-   function handleClickNextScore() {
-      setWrongToggle(!wrongToggle);
-      setIsCapial(true);
-   }
+  }
+  function handleClickNext() {
+    getRandomAll();
+    useref.current.style.backgroundColor = 'transparent';
+    useref.current.style.backgroundImage = "none"
+  }
+
+  function handleClickNextScore() {
+    setWrongToggle(!wrongToggle);
+    setIsCapial(true);
+    setDisbleButton(false);
+  }
 
   console.log(toggle);
   //function to back to the country quiz
@@ -113,7 +120,7 @@ function App() {
       {isCapital ? <div className="Score">
         <p><img src={ScoreImage}></img></p>
         <h2>Results</h2>
-        <p>You got {score} correct answers</p>
+        <p>You got <b className="number">{score}</b>correct answers</p>
         <button onClick={bacToQuiz} className="TryAgain">Try again</button>
       </div> :
         <div className="quiz">
@@ -129,30 +136,34 @@ function App() {
           </div>
           <div className="options">
             <form>
-              <button 
-              value={randomOptions[0]} 
-              ref={randomCountry === randomOptions[0] ? useref : null} 
-              onClick={(e) => handleClick(e)}> <b>A</b> {randomOptions[0]}</button>
-              <button value={randomOptions[1]} 
-               ref={randomCountry === randomOptions[1] ? useref : null}
-               onClick={(e) => handleClick(e)}> <b>B</b> {randomOptions[1]}</button>
-              <button 
-              value={randomOptions[2]} 
-              ref={randomCountry === randomOptions[2] ? useref : null}
-              onClick={(e) => handleClick(e)}> <b>C</b> {randomOptions[2]}</button>
-              <button 
-              value={randomOptions[3]} 
-              ref={randomCountry === randomOptions[3] ? useref : null}
-              onClick={(e) => handleClick(e)}> <b>D</b> {randomOptions[3]}</button>
+              <button
+                value={randomOptions[0]}
+                disabled={disablebutton}
+                ref={randomCountry === randomOptions[0] ? useref : null}
+                onClick={(e) => handleClick(e)}>
+
+                <b>A</b> {randomOptions[0]}</button>
+              <button value={randomOptions[1]}
+                disabled={disablebutton}
+                ref={randomCountry === randomOptions[1] ? useref : null}
+                onClick={(e) => handleClick(e)}> <b>B</b> {randomOptions[1]}</button>
+              <button
+                value={randomOptions[2]}
+                disabled={disablebutton}
+                ref={randomCountry === randomOptions[2] ? useref : null}
+                onClick={(e) => handleClick(e)}> <b>C</b> {randomOptions[2]}</button>
+              <button
+                value={randomOptions[3]}
+                disabled={disablebutton}
+                ref={randomCountry === randomOptions[3] ? useref : null}
+                onClick={(e) => handleClick(e)}> <b>D</b> {randomOptions[3]}</button>
             </form>
-           
           </div>
-         
           {toggle ? <button onClick={handleClickNext} className="next-country">Next</button> : ""}
           {wrongToggle ? <button onClick={handleClickNextScore} className="next-country">Next</button> : ""}
         </div>
       }
-       <p className="about">HANITRINIAINA Nomenjanahary Synthia @ DevChallenges.io</p>
+      <p className="about">HANITRINIAINA Nomenjanahary Synthia @ DevChallenges.io</p>
     </div>
   )
 }

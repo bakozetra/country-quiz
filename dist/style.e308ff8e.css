@@ -8,6 +8,7 @@ body {
   grid-column: 2;
   width: 100%;
   margin: 0;
+  font-family: "Roboto";
 }
 header {
   display: flex;
@@ -16,6 +17,12 @@ header {
 
 h1 {
   color: white;
+  font-size: 3rem;
+  margin: 0;
+  font-weight: 1000;
+  font-style: normal;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 form {
@@ -37,7 +44,7 @@ form button {
   border: 2px solid rgba(96, 102, 208, 0.7);
   background-color: white;
   position: relative;
-  color:rgba(96,102,208,.8);
+  color: rgba(96, 102, 208, 0.8);
   font-size: 18px;
   font-family: "Arial";
   font-weight: 700;
@@ -58,11 +65,11 @@ form button:hover {
 }
 
 .quiz {
-  width: 445px;
+  width: 464px;
   max-width: 100%;
   grid-column: 2;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 24px;
   position: relative;
 }
 
@@ -76,6 +83,9 @@ form button:hover {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   padding-top: 2rem;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header p {
@@ -94,14 +104,15 @@ header p {
 
 .decription-trip img {
   position: absolute;
-  top: -2rem;
-  right: 1rem;
+  top: -4rem;
+  right: 0rem;
 }
 .Score {
   background-color: white;
-  width: 400px;
-  border-radius: 10px;
+  width: 464px;
+  border-radius: 24px;
 }
+
 .flag {
   width: 20%;
   position: absolute;
@@ -112,7 +123,6 @@ header p {
 .flag-Question {
   padding-top: 5rem;
   padding-left: 2rem;
- 
 }
 .capital-question,
 .flag-Question {
@@ -133,32 +143,63 @@ header p {
   height: 50px;
   width: 170px;
   margin-bottom: 2rem;
-  border-radius: 15px;
+  border-radius: 12px;
   outline: none;
+  color: rgba(29, 53, 93, 1);
+  font-size: 18px;
 }
 
 .next-country {
-  width: 75px;
-  height: 45px;
+  width: 116px;
+  height: 56px;
   margin-bottom: 1rem;
-  margin-left: 18rem;
-  border-radius: 15px;
+  margin-left: 17rem;
+  border-radius: 12px;
   outline: none;
   background-color: orange;
   border: none;
+  color: white;
+  font-size: 18px;
+  font-family: "Roboto";
+  font-weight: bold;
+  text-align: center;
 }
 form button:hover {
   background-color: orange;
 }
+.Score h2 {
+  font-size: 48px;
+  font-family: "Roboto";
+  font-weight: 700;
+  margin: 0;
+  padding-top: 2rem;
+}
 
+.Score img {
+  padding-top: 50px;
+}
+.number {
+  position: relative;
+  left: 0;
+  color: #51e47d;
+  font-size: 2rem;
+  padding-right: 0.25rem;
+}
+.Score p {
+  margin: 0;
+}
+.Score p + h2 + p {
+  font-family: "Roboto";
+  margin: 0;
+  padding-bottom: 4rem;
+}
 @media (max-width: 375px) {
-
   .quiz,
   .Score {
     width: 300px;
   }
   .next-country {
-    margin-left: 10rem
+    margin-left: 10rem;
   }
 
   .capital-question,
